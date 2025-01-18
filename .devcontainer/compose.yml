@@ -1,0 +1,19 @@
+name: "try-python"
+
+services:
+  flask-app:
+    labels:
+      - dev.orbstack.domains=flask.local
+      - dev.orbstack.http-port=9000
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sleep infinity
+    volumes:
+      - ..:/workspace
+    ports:
+      - "9000:9000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      - FLASK_RUN_HOST=
